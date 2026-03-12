@@ -174,14 +174,24 @@ Cadastro com dados válidos	✅ PASSOU
 
 ## 🐛 Observações Técnicas
 
-Durante o desenvolvimento, foram identificados e tratados:
+Durante o desenvolvimento foram identificados e tratados  os seguintes pontos:
 
-Erros React #418 e #423: Ignorados com Cypress.on('uncaught:exception')
+| Problema | Solução aplicada | Possível relação com bugs reportados |
+|----------|-----------------|--------------------------------------|
+| Erros React #418 e #423 | Ignorados com `Cypress.on('uncaught:exception')` | Podem estar relacionados ao CLS elevado (0.721) identificado na página de Cadastro e ao layout quebrado em mobile (BUG-R001) |
+| Checkboxes invisíveis | Resolvido com `{ force: true }` | Relacionado ao BUG-002 — checkboxes não acessíveis via teclado |
+| Timeouts ajustados para 15000ms | Configurado no `cypress.config.js` | Relacionado à Performance baixa identificada no Lighthouse (49/100 em todas as páginas) |
 
-Checkboxes invisíveis: Resolvido com { force: true }
+### 🔍 Análise dos Erros React
 
-Timeouts: Ajustados para 15000ms
+**React Error #418 e #423 — Erros de Hidratação:**
+Esses erros ocorrem quando o HTML gerado pelo servidor  diverge do que o React esperava renderizar no navegador.
+Foram ignorados nos testes automatizados pois não bloqueiam o fluxo de cadastro, porém reforçam os problemas de  performance e layout já identificados nos testes manuais:
+
+- O **CLS de 0.721** na página de Cadastro indica que elementos se movem durante o carregamento, comportamento   consistente com erros de hidratação do React
+- O **layout quebrado em mobile** (BUG-005) pode ter origem no mesmo problema de renderização
 
 ## 👩‍💻 Autora
 Patricia Travassos
+
 Desafio Técnico - Lacrei Saúde (QA Júnior)
