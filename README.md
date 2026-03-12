@@ -178,7 +178,7 @@ Durante o desenvolvimento foram identificados e tratados  os seguintes pontos:
 
 | Problema | Solução aplicada | Possível relação com bugs reportados |
 |----------|-----------------|--------------------------------------|
-| Erros React #418 e #423 | Ignorados com `Cypress.on('uncaught:exception')` | Podem estar relacionados ao CLS elevado (0.721) identificado na página de Cadastro e ao layout quebrado em mobile (BUG-R001) |
+| Erros React #418 e #423 | Ignorados com `Cypress.on('uncaught:exception')` | Podem estar relacionados ao CLS elevado (0.721) identificado na página de Cadastro e ao layout quebrado em mobile (BUG-005) |
 | Checkboxes invisíveis | Resolvido com `{ force: true }` | Relacionado ao BUG-002 — checkboxes não acessíveis via teclado |
 | Timeouts ajustados para 15000ms | Configurado no `cypress.config.js` | Relacionado à Performance baixa identificada no Lighthouse (49/100 em todas as páginas) |
 
